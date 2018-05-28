@@ -21,6 +21,13 @@ public class ShipActor : MonoBehaviour{
 	// Use this for initialization
 	private void Start (){
 		myRigidbody = GetComponent<Rigidbody>();
+
+		endPadLayer = LayerMask.NameToLayer("EndPad");
+		startPadLayer = LayerMask.NameToLayer("StartPad");
+		groundLayer = LayerMask.NameToLayer("Ground");
+		obstacleLayer = LayerMask.NameToLayer("Obstacle");
+		
+
 	}
 	
 	// Update is called once per frame
@@ -38,7 +45,12 @@ public class ShipActor : MonoBehaviour{
 		thrust();
 		rotate();
 		correct();
-		
+
+
+
+		if (Debug.isDebugBuild){
+			useDebugKeys();
+		}
 		
 	
 			
@@ -84,23 +96,23 @@ public class ShipActor : MonoBehaviour{
 	
 	private void OnCollisionEnter(Collision other){
 
-		if (other.gameObject.layer == 11){
+		
+		if (other.gameObject.layer == startPadLayer){
 			Debug.Log("collided with start pad");
 			
 		}
-		else if (other.gameObject.layer == 10){
+		else if (other.gameObject.layer == endPadLayer){
 	
 			Debug.Log("collided with end pad");
-
 			Utils.loadNextScene();
 		}
-		else if (other.gameObject.layer == 12){
+		else if (other.gameObject.layer == groundLayer){
 			Debug.Log("collided with ground");
 		}
 		else if (other.gameObject.layer == gameObject.layer){
 			Debug.Log("collided with another ship");
 		}
-		else if (other.gameObject.layer == 13){
+		else if (other.gameObject.layer == obstacleLayer){
 			
 			
 			Debug.Log("collided with obstacle");
@@ -108,7 +120,17 @@ public class ShipActor : MonoBehaviour{
 			Utils.reloadCurrentScene();
 		}
 		
+		
+		
 
+	}
+
+	
+	private void useDebugKeys(){
+
+		if (Input.GetKeyDown(KeyCode.Semicolon)){
+			Utils.loadNextScene();
+		}
 	}
 
 	private void OnCollisionStay(Collision other){
@@ -126,4 +148,8 @@ public class ShipActor : MonoBehaviour{
 	}
 	
 	private Rigidbody myRigidbody;
+	private int endPadLayer;
+	private int startPadLayer;
+	private int groundLayer;
+	private int obstacleLayer;
 }
