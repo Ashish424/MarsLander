@@ -8,10 +8,12 @@ public class ShipActor : MonoBehaviour{
 
 
 
-	public float forceFactor = 1;
-	public float rotationFactor = 10;
-	public float gravityFactor = 0.5f;
-	public float reactive = 0.03f;
+
+	
+	[SerializeField]private float forceFactor = 1;
+	[SerializeField]private float rotationFactor = 10;
+	[SerializeField]private float gravityFactor = 0.5f;
+	[SerializeField]private float reactive = 0.03f;
 	
 	
 	
@@ -75,6 +77,28 @@ public class ShipActor : MonoBehaviour{
 		//exponential correction factor
 		myRigidbody.AddForce(-reactive * (myRigidbody.velocity - proj * len), ForceMode.Impulse);
 		Debug.DrawLine(myRigidbody.position, myRigidbody.position + myRigidbody.velocity, Color.black, 0.0f, false);
+	}
+	
+	
+	
+	private void OnCollisionEnter(Collision other){
+		//TODO test collsions
+		
+		Debug.Log("ship collision begin ");
+	}
+
+	private void OnCollisionStay(Collision other){
+		Debug.Log("some one stay");
+		Debug.Log("ship collision stay");
+		
+
+	}
+
+	private void OnCollisionExit(Collision other){
+		
+		Debug.Log("ship collision exit");
+		
+
 	}
 	
 	private Rigidbody myRigidbody;
