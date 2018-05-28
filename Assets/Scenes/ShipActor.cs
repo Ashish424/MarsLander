@@ -82,21 +82,43 @@ public class ShipActor : MonoBehaviour{
 	
 	
 	private void OnCollisionEnter(Collision other){
+
+		if (other.gameObject.layer == 11){
+			Debug.Log("collided with start pad");
+			
+		}
+		else if (other.gameObject.layer == 10){
+			Debug.Log("collided with end pad");
+		}
+		else if (other.gameObject.layer == 12){
+			Debug.Log("collided with ground");
+		}
+		else if (other.gameObject.layer == gameObject.layer){
+			Debug.Log("collided with another ship");
+		}
+		else if (other.gameObject.layer == 13){
+			Destroy(gameObject);
+			Debug.Log("collided with obstacle");
+		}
+		
+		
+		
+		
 		//TODO test collsions
 		
-		Debug.Log("ship collision begin ");
+//		Debug.Log("ship collision begin ");
 	}
 
 	private void OnCollisionStay(Collision other){
-		Debug.Log("some one stay");
-		Debug.Log("ship collision stay");
+//		Debug.Log("some one stay");
+//		Debug.Log("ship collision stay");
 		
 
 	}
 
 	private void OnCollisionExit(Collision other){
 		
-		Debug.Log("ship collision exit");
+//		Debug.Log("ship collision exit");
 		
 
 	}

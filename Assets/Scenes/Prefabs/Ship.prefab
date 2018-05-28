@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33600040522867894}
   - component: {fileID: 23976419694276880}
   - component: {fileID: 65824315656494828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33799298702815522}
   - component: {fileID: 23093099666249394}
   - component: {fileID: 65495835043650208}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 33891964884541122}
   - component: {fileID: 23208238379944646}
   - component: {fileID: 65407758689972482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 33344676581572278}
   - component: {fileID: 23651875705062476}
   - component: {fileID: 135489449770340280}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 33797048434007008}
   - component: {fileID: 23361053604967448}
   - component: {fileID: 65787995036372862}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stabilizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 4873329599499638}
   - component: {fileID: 54124561007208700}
   - component: {fileID: 114838432898115276}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}

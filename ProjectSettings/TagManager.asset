@@ -14,11 +14,11 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ship
+  - EndPad
+  - StartPad
+  - Ground
+  - Obstacle
   - 
   - 
   - 

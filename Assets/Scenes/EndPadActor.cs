@@ -21,17 +21,17 @@ public class EndPadActor : MonoBehaviour {
 	private void OnCollisionEnter(Collision other){
 		//TODO test collsions
 		
-		Debug.Log("some one entered ");
+//		Debug.Log("some one entered ");
 	}
 
 	private void OnCollisionStay(Collision other){
-		Debug.Log("some one stay");
+//		Debug.Log("some one stay");
 
 	}
 
 	private void OnCollisionExit(Collision other){
 		
-		Debug.Log("some one exit");
+//		Debug.Log("some one exit");
 
 	}
 }

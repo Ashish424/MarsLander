@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33228947082572410}
   - component: {fileID: 23577616310264464}
   - component: {fileID: 65142793327788844}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: StartPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
