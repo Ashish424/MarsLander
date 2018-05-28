@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class ShipActor : MonoBehaviour{
 
@@ -88,7 +89,10 @@ public class ShipActor : MonoBehaviour{
 			
 		}
 		else if (other.gameObject.layer == 10){
+	
 			Debug.Log("collided with end pad");
+
+			Utils.loadNextScene();
 		}
 		else if (other.gameObject.layer == 12){
 			Debug.Log("collided with ground");
@@ -97,16 +101,14 @@ public class ShipActor : MonoBehaviour{
 			Debug.Log("collided with another ship");
 		}
 		else if (other.gameObject.layer == 13){
-			Destroy(gameObject);
+			
+			
 			Debug.Log("collided with obstacle");
+			Destroy(gameObject);
+			Utils.reloadCurrentScene();
 		}
 		
-		
-		
-		
-		//TODO test collsions
-		
-//		Debug.Log("ship collision begin ");
+
 	}
 
 	private void OnCollisionStay(Collision other){
