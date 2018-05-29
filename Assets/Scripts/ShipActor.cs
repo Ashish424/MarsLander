@@ -172,9 +172,9 @@ public class ShipActor : MonoBehaviour{
 	
 	private void OnCollisionStay(Collision other){
 
-		if (alive){
-			Debug.Log("collding still");
-		}
+//		if (alive){
+//			Debug.Log("collding still");
+//		}
 
 	}
 	
@@ -182,7 +182,6 @@ public class ShipActor : MonoBehaviour{
 
 	
 	private void useDebugKeys(){
-
 		if (Input.GetKeyDown(KeyCode.Semicolon)){
 			Utils.loadNextScene();
 		}
