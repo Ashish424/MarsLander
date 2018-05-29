@@ -15,6 +15,11 @@ public class ShipActor : MonoBehaviour{
 	[SerializeField]private float rotationFactor = 10;
 	[SerializeField]private float gravityFactor = 0.5f;
 	[SerializeField]private float reactive = 0.03f;
+	[SerializeField] private ParticleSystem deathParticleSystem;
+	
+
+
+	private bool alive ;
 	
 	
 	
@@ -26,6 +31,10 @@ public class ShipActor : MonoBehaviour{
 		startPadLayer = LayerMask.NameToLayer("StartPad");
 		groundLayer = LayerMask.NameToLayer("Ground");
 		obstacleLayer = LayerMask.NameToLayer("Obstacle");
+		alive = true;
+		
+		
+		
 		
 
 	}
@@ -41,22 +50,24 @@ public class ShipActor : MonoBehaviour{
 		
 		myRigidbody.AddForce(-Physics.gravity*gravityFactor);
 
-		
-		thrust();
-		rotate();
-		correct();
+
+		if (alive){
+			
+			thrust();
+			rotate();
+			correct();
 
 
+		}
 
 		if (Debug.isDebugBuild){
 			useDebugKeys();
 		}
-		
-	
-			
-
 
 		
+
+
+
 	}
 
 
@@ -91,11 +102,42 @@ public class ShipActor : MonoBehaviour{
 		myRigidbody.AddForce(-reactive * (myRigidbody.velocity - proj * len), ForceMode.Impulse);
 		Debug.DrawLine(myRigidbody.position, myRigidbody.position + myRigidbody.velocity, Color.black, 0.0f, false);
 	}
+
+
+
+
+
+	void killPlayer(int seconds){
+		alive = false;
+		StartCoroutine(explodeAndKill(seconds));
+		
+	}
+
+	private IEnumerator explodeAndKill(float time){
+
+
+		
+		Assert.IsNotNull(deathParticleSystem,"Please assign a particle system for death explosion");
 	
-	
-	
+		deathParticleSystem.Play();
+		
+		yield return new WaitForSeconds(time);
+		deathParticleSystem.Stop();
+		
+		
+		
+		Destroy(gameObject);
+		
+		Utils.reloadCurrentScene();
+
+
+		
+	}
 	private void OnCollisionEnter(Collision other){
 
+		
+		if(!alive)return;
+		
 		
 		if (other.gameObject.layer == startPadLayer){
 			Debug.Log("collided with start pad");
@@ -113,17 +155,30 @@ public class ShipActor : MonoBehaviour{
 			Debug.Log("collided with another ship");
 		}
 		else if (other.gameObject.layer == obstacleLayer){
+			Debug.Log("collided with other guy");
+
+			
+			killPlayer(5);
 			
 			
-			Debug.Log("collided with obstacle");
-			Destroy(gameObject);
-			Utils.reloadCurrentScene();
+			
 		}
 		
 		
 		
 
 	}
+	
+	
+	private void OnCollisionStay(Collision other){
+
+		if (alive){
+			Debug.Log("collding still");
+		}
+
+	}
+	
+	
 
 	
 	private void useDebugKeys(){
@@ -131,13 +186,6 @@ public class ShipActor : MonoBehaviour{
 		if (Input.GetKeyDown(KeyCode.Semicolon)){
 			Utils.loadNextScene();
 		}
-	}
-
-	private void OnCollisionStay(Collision other){
-//		Debug.Log("some one stay");
-//		Debug.Log("ship collision stay");
-		
-
 	}
 
 	private void OnCollisionExit(Collision other){
