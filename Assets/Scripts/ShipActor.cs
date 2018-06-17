@@ -48,8 +48,8 @@ public class ShipActor : MonoBehaviour{
 		
 		
 		
-		myRigidbody.AddForce(-Physics.gravity*gravityFactor);
-
+		myRigidbody.AddForce(-Physics.gravity*gravityFactor,ForceMode.Acceleration);
+		
 
 		if (alive){
 			
@@ -81,12 +81,12 @@ public class ShipActor : MonoBehaviour{
 	}
 	private void rotate(){
 				
-		if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)){		
+		if (Input.GetKey(KeyCode.A)){		
 			myRigidbody.AddTorque(Vector3.forward*rotationFactor);
 		}
 		
 		
-		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)){		
+		if (Input.GetKey(KeyCode.D)){		
 			myRigidbody.AddTorque(-Vector3.forward*rotationFactor);
 		}
 
