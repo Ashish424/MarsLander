@@ -15,6 +15,8 @@ public class ShipActor : MonoBehaviour{
 	[SerializeField]private float rotationFactor = 10;
 	[SerializeField]private float gravityFactor = 0.5f;
 	[SerializeField]private float reactive = 0.03f;
+	[SerializeField]private float maxSpeed = 10.0f;
+
 	[SerializeField] private ParticleSystem deathParticleSystem;
 	
 
@@ -56,6 +58,8 @@ public class ShipActor : MonoBehaviour{
 			thrust();
 			rotate();
 			correct();
+			limitSpeed();
+
 
 
 		}
@@ -103,6 +107,20 @@ public class ShipActor : MonoBehaviour{
 		Debug.DrawLine(myRigidbody.position, myRigidbody.position + myRigidbody.velocity, Color.black, 0.0f, false);
 	}
 
+	
+	
+	private void limitSpeed(){
+
+		Vector3 myVelocity = myRigidbody.velocity;
+		if (myVelocity.sqrMagnitude > maxSpeed * maxSpeed){
+			myRigidbody.AddForce(myVelocity.normalized*(maxSpeed-myVelocity.magnitude),ForceMode.VelocityChange);
+		}
+
+
+	}
+
+
+	
 
 
 
@@ -199,4 +217,5 @@ public class ShipActor : MonoBehaviour{
 	private int startPadLayer;
 	private int groundLayer;
 	private int obstacleLayer;
+	
 }

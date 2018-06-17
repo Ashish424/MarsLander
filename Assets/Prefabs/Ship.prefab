@@ -737,6 +737,7 @@ MonoBehaviour:
   rotationFactor: 3
   gravityFactor: 0.8
   reactive: 0.03
+  maxSpeed: 10
   deathParticleSystem: {fileID: 198108784682441116}
 --- !u!135 &135489449770340280
 SphereCollider:
