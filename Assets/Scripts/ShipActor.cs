@@ -68,6 +68,11 @@ public class ShipActor : MonoBehaviour{
 			useDebugKeys();
 		}
 
+		if (Input.GetKeyUp(KeyCode.Escape)){
+			Application.Quit();
+			
+		}
+
 		
 
 
