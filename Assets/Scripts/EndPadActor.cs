@@ -19,7 +19,7 @@ public class EndPadActor : MonoBehaviour {
 
 
 	private void OnCollisionEnter(Collision other){
-		//TODO test collsions
+	
 		
 //		Debug.Log("some one entered ");
 	}
